@@ -8,6 +8,8 @@ var path = require('path');
 var spawn = require('child_process').spawn;
 var proc;
 
+var port = process.env.PORT || 3000
+
 app.use('/', express.static(path.join(__dirname, 'stream')));
 
 
@@ -39,8 +41,8 @@ io.on('connection', function(socket) {
 
 });
 
-http.listen(3000, function() {
-  console.log('listening on *:3000');
+http.listen(port, function() {
+  console.log('listening on *:'+port);
 });
 
 function stopStreaming() {
@@ -70,3 +72,4 @@ function startStreaming(io) {
   })
 
 }
+
